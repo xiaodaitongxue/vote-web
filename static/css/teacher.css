@@ -1,0 +1,55 @@
+       #container {
+            width: 80%;
+            margin: 10px auto;
+        }
+
+        .teacher {
+            width: 100%;
+            margin: 0 auto;
+            padding: 10px 0;
+            border-bottom: 1px dashed gray;
+            overflow: auto;
+        }
+
+        .teacher div {
+            float: left;
+        }
+
+        .photo {
+            height: 140px;
+            border-radius: 75px;
+            overflow: hidden;
+            margin-left: 20px;
+        }
+
+        .info {
+            width: 75%;
+            margin-left: 30px;
+        }
+
+        .info div {
+            clear: both;
+            margin: 5px 10px;
+        }
+
+        .info span {
+            margin-right: 25px;
+        }
+
+        .info a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        .user {
+            float: right;
+            margin: 10px 10px;
+        }
+
+        .user + h1 {
+            clear: both;
+        }
+
+        #photo {
+            border-radius: 32px 32px 32px 32px;
+        }

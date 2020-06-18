@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<div class="user">
+     <a href="/vote/home">主页</a>
+     <a href="/vote/comment">评价汇总</a>
+    {% if request.session.userno %}
+    <span>{{ request.session.username }}</span>
+    <a href="/vote/logout">注销</a>
+    {% else %}
+    <a href="/vote/login">登录</a>&nbsp;&nbsp;
+    {% endif %}
+    <a href="/vote/register">注册</a>
+    <br>
+    <span>每人仅有6票</span>
+</div>

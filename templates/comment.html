@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{#    666#}
+    <h1>{{ signal }}</h1>
+
+    <div id="main" style="width: 600px; height: 400px; background-color: red"></div>
+    <span>截止到：{{ date }},已有 {{ total }} 人投票</span>
+    <p>
+        <a href="{% url 'vote:login' %}">返回首页</a>
+        <a href="{% url 'vote:excel' %}">导出数据到excel</a>
+    </p>
+{% endblock %}
+{% block ext_js %}
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script>
+        var myChart = echarts.init(document.querySelector('#main'))
+        {#fetch('/teachers_data/')#}
+        fetch('{% url 'vote:teachers_data' %}')
+            .then(resp => resp.json())
+            .then(json => {
+                var option = {
+                    color: ['#0f0', '#00f'],
+                    title: {
+                        text: '老师评价统计图'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: ['好评', '差评']
+                    },
+                    xAxis: {
+                        data: json.names
+                    },
+                    yAxis: {},
+                    series: [
+                        {
+                            name: '好评',
+                            type: 'bar',
+                            data: json.good
+                        },
+                        {
+                            name: '差评',
+                            type: 'bar',
+                            data: json.bad
+                        }
+                    ]
+                }
+                myChart.setOption(option)
+            })
+    </script>
+{% endblock %}
+

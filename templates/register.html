@@ -1,0 +1,95 @@
+
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>用户注册</title>#}
+{#    <style type="text/css" src="{% static '/css/register.css' %}"></style>#}
+{#    <script type="text/javascript" src="{% static '/js/register.js' %}"></script>#}
+{#</head>#}
+{#<body>#}
+{#<h1>用户注册</h1>#}
+{#<hr>#}
+{#<p class="hint">{{ hint }}</p>#}
+{#<form action="{% url 'vote:register' %}" method="post">#}
+{#    {% csrf_token %}#}
+{#    <div class="input">#}
+{#        <label for="username">用户名：</label>#}
+{#        <input type="text" id="username" name="username">#}
+{#    </div>#}
+{##}
+{#    <div class="input">#}
+{#        <label for="email">邮箱：</label>#}
+{#        <input type="text" id="email" name="email">#}
+{#    </div>#}
+{##}
+{#    <div class="input">#}
+{#        <label for="password">密码：</label>#}
+{#        <input type="password" id="password" name="password">#}
+{#        <span>位数不能少于8位</span>#}
+{#    </div>#}
+{##}
+{#    <div class="input">#}
+{#        <label for="repassword">确认密码：</label>#}
+{#        <input type="password" id="repassword" name="repassword">#}
+{#    </div>#}
+{#    <div class="input">#}
+{#        <input type="submit" value="注册">#}
+{#        <input type="reset" value="重置">#}
+{#    </div>#}
+{#</form>#}
+{#<a href="{% url 'vote:login' %}">返回登录</a>#}
+{#</body>#}
+{#</html>#}
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block ext_css %}
+    <style type="text/css" src="{% static '/css/register.css' %}"></style>
+{% endblock %}
+
+{% block ext_js %}
+     <script type="text/javascript" src="{% static '/js/register.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <h1>用户注册</h1>
+{#<hr>#}
+    <div class="container">
+<p class="hint">{{ hint }}</p>
+<form action="{% url 'vote:register' %}" method="post">
+    {% csrf_token %}
+    <div class="input">
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="username">
+        <span>长度不小于4</span>
+    </div>
+
+    <div class="input">
+        <label for="email">邮箱：</label>
+        <input type="text" id="email" name="email">
+    </div>
+
+    <div class="input">
+        <label for="password">密码：</label>
+        <input type="password" id="password" name="password">
+        <span>位数不能少于8位</span>
+    </div>
+
+    <div class="input">
+        <label for="repassword">确认密码：</label>
+        <input type="password" id="repassword" name="repassword">
+    </div>
+    <div class="input">
+        <input type="submit" value="注册">
+        <input type="reset" value="重置">
+    </div>
+</form>
+<a href="{% url 'vote:login' %}">返回登录</a>
+    </div>
+{% endblock %}
+

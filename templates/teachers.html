@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>{{ subject.name }}学科-老师信息</h1>
+<hr>
+{% if teachers %}
+    {% for teacher in teachers %}
+        <div id="container">
+            <div class="teacher">
+                <div class="photo">
+                    <img src="{% static teacher.photo %}" alt="">
+                    {#            <img src="/static/images/zhangwuji.png" alt="">#}
+                </div>
+                <div class="info">
+                    <h3>老师姓名：{{ teacher.name }}</h3>
+                    <p>老师介绍：{{ teacher.detail }}</p>
+                    <p>老师编号：{{ teacher.no }}</p>
+                    <p class="comment">
+                        <a href="" class="good" gno="{{ teacher.no }}">好评</a>
+                        (<span>{{ teacher.good_count }}</span>)
+                        <a href="" class="bad" bno="{{ teacher.no }}">差评</a>
+                        (<span>{{ teacher.bad_count }}</span>)
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h3>暂时没有该学科的老师信息</h3>
+{% endif %}
+<p>
+    <a href="{% url 'vote:home' %}">返回首页</a>
+</p>
+{% endblock %}
+
+
+{% block ext_js %}
+    <style type="text/css" src="{% static 'css/teacher.css' %}"></style>
+    <script type="text/javascript" src="{% static 'js/jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/teacher.js' %}"></script>
+{% endblock %}
+

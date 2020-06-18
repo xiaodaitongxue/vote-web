@@ -1,0 +1,55 @@
+        #container {
+            width: 400px;
+            margin: 200px auto;
+        }
+
+        .input, form + a {
+            margin: 20px 20px;
+            width: 250px;
+        }
+
+        .input > label {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+
+        .input:last-child {
+            text-align: center;
+        }
+
+        input[type=text], input[type=password] {
+            outline: none;
+        }
+
+        input[type=submit], input[type=reset] {
+            width: 60px;
+        }
+
+        form + a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        .hint {
+            margin-left: 20px;
+            color: red;
+            font-size: 0.8em;
+            height: 20px;
+        }
+
+        .mobile {
+            width: 300px;
+        }
+
+        .photo {
+            width: 350px;
+        }
+
+        .preview {
+            margin: 10px 50px;
+        }
+
+        .intro {
+            width: 720px;
+        }
